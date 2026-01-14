@@ -16,7 +16,7 @@ public Order(String customerName, String phoneNumber,
 	this.address = address;
 	this.pizza = pizza;
 	this.isDelivery = isDelivery;
-	this.totalPrice = calcFinPrice();
+	this.totalPrice = metodes.aprekinatCenu(pizza, isDelivery);
 	
 }
 }
