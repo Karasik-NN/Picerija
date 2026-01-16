@@ -17,7 +17,7 @@ public class Picca {
 		 this.size = size;
 		 this.sauce = sauce;
 		 this.toppings = new ArrayList<>();
-		 this.basePrice = 0.0;
+		 this.basePrice = calcBasePrice(size);
 	 }
 	private double calcBasePrice(String size) {
 		switch(size.toLowerCase())

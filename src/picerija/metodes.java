@@ -11,24 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class metodes {
-private static final String FILE_NAME = "pasutijumi.txt";
-public static void saglabatFaila(String info) {
-	try {
-		File fails = new File(FILE_NAME);
-		if (!fails.exists()) {
-			fails.createNewFile();
-			
-			JOptionPane.showMessageDialog(null,"Fails ir izveidots"+ FILE_NAME);
-		}
-		try(BufferedWriter writer = new BufferedWriter(new FileWriter(fails, true))){
-			writer.write(info);
-			writer.newLine();
-		}
-		
-	}catch(IOException e) {
-		JOptionPane.showMessageDialog(null, "Kļuda ar darbu ar Failu!"+e.getMessage(),"Kļuda",JOptionPane.ERROR_MESSAGE);
-	}
-}
+	
 	public static double aprekinatCenu(Picca pizza, boolean isDelivery) {
 		double total = pizza.getBasePrice();
 		total +=
