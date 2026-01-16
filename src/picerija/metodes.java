@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class metodes {
-	
+	public static void saktPasutijumu() {
+	      
+        
+	}
 	public static double aprekinatCenu(Picca pizza, boolean isDelivery) {
 		double total = pizza.getBasePrice();
 		total +=
