@@ -15,7 +15,7 @@ public class metodes {
 		String name = JOptionPane.showInputDialog("Ievadiet pircēja vārdu:");
         if (name == null) return;
 
-        String phone = JOptionPane.showInputDialog("Ievadiet telefona numuru:");
+        String phone = JOptionPane.showInputDialog("Ievadiet telefona numuru: ");
         if (phone == null) return;
     
         String[] picasVeidi = {"Margarita", "Kapri", "Studentu", "Havajas"};
