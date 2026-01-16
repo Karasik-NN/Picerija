@@ -43,7 +43,46 @@ public class metodes {
                 break;
             }
         }
+        String[] merces = {"Tomātu", "Ķiploku", "BBQ"};
+        String merce = (String) JOptionPane.showInputDialog(null, "Izvēlieties mērci:", "Mērce",
+                JOptionPane.QUESTION_MESSAGE, null, merces, merces[0]);
+             
+        int deliveryOpt = JOptionPane.showConfirmDialog(null, "Vai nepieciešama piegāde?", "Piegāde", JOptionPane.YES_NO_OPTION);
+        boolean isDelivery = (deliveryOpt == JOptionPane.YES_OPTION);
+        String address = "-";
+        if (isDelivery) {
+            address = JOptionPane.showInputDialog("Ievadiet piegādes adresi:");
+        }
+      
+        Order pasutijums = new Order(name, phone, address, pica, isDelivery);
+               
+        double galaSuma = aprekinatCenu(pica, isDelivery);
 
+        String čeks = String.format("KLIENTS: %s (%s)\nADRESE: %s\nPICA: %s [%s]\nSUMMA: %.2f EUR", 
+                                    name, phone, address, veids, izmers, galaSuma);
+
+        JOptionPane.showMessageDialog(null, čeks, "Pasūtījuma kopsavilkums", JOptionPane.INFORMATION_MESSAGE);
+        
+      
+        saglabatFaila(čeks);
+    }
+private static final String FILE_NAME = "pasutijumi.txt";
+public static void saglabatFaila(String info) {
+	try {
+		File fails = new File(FILE_NAME);
+		if (!fails.exists()) {
+			fails.createNewFile();
+			
+			JOptionPane.showMessageDialog(null,"Fails ir izveidots "+ FILE_NAME);
+		}
+		try(BufferedWriter writer = new BufferedWriter(new FileWriter(fails, true))){
+			writer.write(info);
+			writer.newLine();
+		}
+		
+	}catch(IOException e) {
+		JOptionPane.showMessageDialog(null, "Kļuda ar darbu ar Failu!"+e.getMessage(),"Kļuda",JOptionPane.ERROR_MESSAGE);
+	}
         
 	}
 	public static double aprekinatCenu(Picca pizza, boolean isDelivery) {
