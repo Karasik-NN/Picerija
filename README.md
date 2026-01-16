@@ -13,7 +13,7 @@ Java (Swing) lietojumprogramma, kas paredzēta picērijas pasūtījumu automatiz
 
 ## 🚀 Izstrādes plāns (Roadmap)
 
-Šeit ir attēlots projekta pašreizējais statuss. Tu vari atzīmēt paveikto, nomainot `[ ]` uz `[x]`.
+Šeit ir attēlots projekta pašreizējais statuss.
 
 - [x] Izveidot bāzes klašu struktūru (`Picca`, `Order`).
 - [x] Realizēt cenas aprēķina loģiku (izmēri + piedevas).
