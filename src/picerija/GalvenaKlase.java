@@ -9,6 +9,7 @@ public class GalvenaKlase {
 		private JTextField nameField, phoneField, addressField;
 		
 private JComboBox<String> typeBox, sizeBox;
+
 	}
 
 }
