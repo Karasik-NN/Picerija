@@ -2,44 +2,127 @@ package picerija;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class GalvenaKlase extends JFrame {
+
+    private JLabel background;
+    private ImageIcon originalIcon;
+    
+   
+    private JButton btnOrder, btnMenu, btnHistory, btnExit;
 
     public GalvenaKlase() {
         setTitle("Picu Pasaule - Galvenā Izvēlne");
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(null);
-
-        //fons
-        JLabel background = new JLabel(new ImageIcon("fon.jpg"));//fonas bilde
-        background.setBounds(0, 0, 800, 600);
-        setContentPane(background);
-        background.setLayout(null);
-
-        //logo
-        JLabel logo = new JLabel(new ImageIcon("image/logo.png")); //logo bilde
-        logo.setBounds(300, 20, 200, 100); 
-        background.add(logo);
-       
-        //pogas
-        JButton btnOrder = createButton("Sākt Pasūtījumu", 300, 150);
-        JButton btnMenu = createButton("Apskatīt Menu", 300, 220);
-        JButton btnHistory = createButton("Vēsture", 300, 290);
-        JButton btnExit = createButton("Iziet", 300, 360);
         
+        
+        originalIcon = new ImageIcon("images/fon.jpg");
+
+        background = new JLabel();
+        setContentPane(background);
+        background.setLayout(null); 
+
        
+        btnOrder = createButton("Sākt Pasūtījumu");
+        btnMenu = createButton("Apskatīt Menu");
+        btnHistory = createButton("Vēsture");
+        btnExit = createButton("Iziet");
+
+        
+        btnOrder.addActionListener(e -> metodes.saktPasutijumu());
+        btnMenu.addActionListener(e -> showPizzaMenu());
+        btnHistory.addActionListener(e -> {
+            String vesture = String.join("\n", metodes.lasitNoFaila());         
+        });
+        btnExit.addActionListener(e -> System.exit(0));
+
+       
+        background.add(btnOrder);
+        background.add(btnMenu);
+        background.add(btnHistory);
+        background.add(btnExit);
+
+   
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                updateLayout();
+            }
+        });
+        
+        updateLayout();
+    }
+
+    private void updateLayout() {
+        int w = this.getWidth();
+        int h = this.getHeight();
+        
+        if (w > 0 && h > 0) {
+            // Fona mērogošana
+            Image img = originalIcon.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+            background.setIcon(new ImageIcon(img));
+
+            // Pogu centrēšana
+            int btnW = 220;
+            int btnH = 50;
+            int startY = h / 3;
+            int gap = 70;
+
+            int centerX = (w / 2) - (btnW / 2);
+
+            btnOrder.setBounds(centerX, startY, btnW, btnH);
+            btnMenu.setBounds(centerX, startY + gap, btnW, btnH);
+            btnHistory.setBounds(centerX, startY + gap * 2, btnW, btnH);
+            btnExit.setBounds(centerX, startY + gap * 3, btnW, btnH);
         }
-    //izveidot pogu
-    private JButton createButton(String text, int x, int y) {
+    }
+
+    private JButton createButton(String text) {
         JButton btn = new JButton(text);
-        btn.setBounds(x, y, 200, 50);
         btn.setFont(new Font("Arial", Font.BOLD, 14));
         btn.setBackground(Color.ORANGE);
         btn.setFocusPainted(false);
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         return btn;
+    }
+    
+    //picas kartes
+    private void showPizzaMenu() {
+        JFrame menuFrame = new JFrame("Picu Menu");
+        menuFrame.setSize(750, 600);
+        menuFrame.setLayout(new GridLayout(0, 2, 10, 10)); 
+
+        menuFrame.add(createPizzaCard("Margarita", "5.00 - 12.00 EUR", "images/margarita.jpg"));
+        menuFrame.add(createPizzaCard("Kapri", "6.00 - 14.00 EUR", "images/kapri.jpg"));
+        menuFrame.add(createPizzaCard("Studentu", "4.50 - 10.00 EUR", "images/studentu.jpg"));
+        menuFrame.add(createPizzaCard("Havajas", "6.50 - 15.00 EUR", "images/havajas.jpg"));
+        menuFrame.add(createPizzaCard("Sicilijas", "6.00 - 13.00 EUR", "images/Sicilijas.jpg"));
+        menuFrame.add(createPizzaCard("Pepperoni", "5.50 - 14.50 EUR", "images/Pepperoni.jpg")); 
+        menuFrame.add(createPizzaCard("Čili", "5.00 - 13.00 EUR", "images/Čili.jpg"));
+        menuFrame.add(createPizzaCard("Kalifornijas", "6.50 - 13.50 EUR", "images/Kalifornijas.jpg"));
+        
+        menuFrame.setLocationRelativeTo(this);
+        menuFrame.setVisible(true);
+    }
+    
+    private JPanel createPizzaCard(String title, String price, String imgPath) {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        JLabel imgLabel = new JLabel("", SwingConstants.CENTER);
+        try {
+            ImageIcon icon = new ImageIcon(imgPath);
+            Image img = icon.getImage().getScaledInstance(180, 120, Image.SCALE_SMOOTH);
+            imgLabel.setIcon(new ImageIcon(img));
+        } catch (Exception e) {
+            imgLabel.setText("Nav bildes");
+        }
+        panel.add(imgLabel, BorderLayout.CENTER);
+        panel.add(new JLabel(title + " (" + price + ")", SwingConstants.CENTER), BorderLayout.SOUTH);
+        return panel;
     }
 
     public static void main(String[] args) {
