@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 public class metodes {
 
+	
     public static void saktPasutijumu() {
 
         String name = JOptionPane.showInputDialog("Ievadiet pircēja vārdu:");
