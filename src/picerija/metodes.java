@@ -110,16 +110,30 @@ public class metodes {
 
     private static final String FILE_NAME = "pasutijumi.txt";
     
-    public static void saglabatFaila(String info) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
-            writer.write(info);
-            writer.newLine();
-            writer.write("==========================================");
-            writer.newLine();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Kļūda saglabājot failā!", "Kļūda", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+   
+    	public static void saglabatFaila(String info) {
+    	    try {
+    	        File fails = new File(FILE_NAME);
+    	           	       
+    	        if (!fails.exists()) {
+    	            fails.createNewFile();
+    	            System.out.println("Fails izveidots: " + fails.getAbsolutePath());
+    	        }
+
+    	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fails, true))) {
+    	            writer.write(info);
+    	            writer.newLine();
+    	            writer.write("==========================================");
+    	            writer.newLine();
+    	            writer.flush();
+    	        }
+    	        
+    	    } catch (IOException e) {
+    	        JOptionPane.showMessageDialog(null, "Kļūda saglabājot failā: " + e.getMessage(), 
+    	                                      "Kļūda", JOptionPane.ERROR_MESSAGE);
+    	    }
+    	}
+    
 
     public static ArrayList<String> lasitNoFaila() {
         ArrayList<String> vesture = new ArrayList<>();

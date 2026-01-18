@@ -1,0 +1,27 @@
+--- PICĒRIJAS ČEKS ---
+KLIENTS: asd (12345678)
+ADRESE: -
+PICA: Margarita [Mazā] (Piedevas: 0)
+DZĒRIENS: Nav
+UZKODA: Nav
+----------------------
+KOPĀ: 5,00 EUR
+==========================================
+--- PICĒRIJAS ČEKS ---
+KLIENTS: asd (12345678)
+ADRESE: -
+PICA: Margarita [Mazā] (Piedevas: 0)
+DZĒRIENS: Nav
+UZKODA: Nav
+----------------------
+KOPĀ: 5,00 EUR
+==========================================
+--- PICĒRIJAS ČEKS ---
+KLIENTS: asd (12345678)
+ADRESE: -
+PICA: Margarita [Mazā] (Piedevas: 0)
+DZĒRIENS: Nav
+UZKODA: Nav
+----------------------
+KOPĀ: 5,00 EUR
+==========================================
