@@ -19,7 +19,10 @@ public class GalvenaKlase extends JFrame {
         setContentPane(background);
         background.setLayout(null);
 
-       
+        //logo
+        JLabel logo = new JLabel(new ImageIcon("image/logo.png")); //logo bilde
+        logo.setBounds(300, 20, 200, 100); 
+        background.add(logo);
        
     }
 
