@@ -11,7 +11,7 @@ public class GalvenaKlase extends JFrame {
     private JLabel background;
     private ImageIcon originalIcon;
     private JButton btnOrder, btnMenu, btnHistory, btnExit;
-    
+       
     public GalvenaKlase() {
         setTitle("Picu Pasaule - Galvenā Izvēlne");
         setSize(800, 600);
