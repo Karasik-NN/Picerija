@@ -1,8 +1,0 @@
-KLIENTS: фыв (фыв)
-ADRESE: -
-PICA: Margarita [Mazā]
-SUMMA: 5,00 EUR
-KLIENTS: фыв (фыв)
-ADRESE: фывфыв
-PICA: Margarita [Lielā]
-SUMMA: 15,50 EUR
