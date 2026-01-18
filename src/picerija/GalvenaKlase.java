@@ -24,6 +24,22 @@ public class GalvenaKlase extends JFrame {
         logo.setBounds(300, 20, 200, 100); 
         background.add(logo);
        
+        //pogas
+        JButton btnOrder = createButton("Sākt Pasūtījumu", 300, 150);
+        JButton btnMenu = createButton("Apskatīt Menu", 300, 220);
+        JButton btnHistory = createButton("Vēsture", 300, 290);
+        JButton btnExit = createButton("Iziet", 300, 360);
+        
+       
+        }
+    //izveidot pogu
+    private JButton createButton(String text, int x, int y) {
+        JButton btn = new JButton(text);
+        btn.setBounds(x, y, 200, 50);
+        btn.setFont(new Font("Arial", Font.BOLD, 14));
+        btn.setBackground(Color.ORANGE);
+        btn.setFocusPainted(false);
+        return btn;
     }
 
     public static void main(String[] args) {
