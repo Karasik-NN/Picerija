@@ -11,31 +11,59 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class metodes {
-	public static void saktPasutijumu() {
-		String name = JOptionPane.showInputDialog("Ievadiet pircēja vārdu:");
+
+    public static void saktPasutijumu() {
+
+        String name = JOptionPane.showInputDialog("Ievadiet pircēja vārdu:");
         if (name == null) return;
 
         String phone = JOptionPane.showInputDialog("Ievadiet telefona numuru: ");
         if (phone == null) return;
-    
+
         String[] picasVeidi = {"Margarita", "Kapri", "Studentu", "Havajas"};
-        String veids = (String) JOptionPane.showInputDialog(null, "Izvēlieties picu:", "Picas izvēle",
-                JOptionPane.QUESTION_MESSAGE, null, picasVeidi, picasVeidi[0]);
+        String veids = (String) JOptionPane.showInputDialog(
+                null,
+                "Izvēlieties picu:",
+                "Picas izvēle",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                picasVeidi,
+                picasVeidi[0]
+        );
 
         String[] izmeri = {"Mazā", "Vidēja", "Lielā"};
-        String izmers = (String) JOptionPane.showInputDialog(null, "Izvēlieties izmēru:", "Izmērs",
-                JOptionPane.QUESTION_MESSAGE, null, izmeri, izmeri[0]);
+        String izmers = (String) JOptionPane.showInputDialog(
+                null,
+                "Izvēlieties izmēru:",
+                "Izmērs",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                izmeri,
+                izmeri[0]
+        );
 
-       
         Picca pica = new Picca(veids, izmers, "Tomātu");
 
-    
         String[] piedevas = {"Dubultais siers", "Bekons", "Sēnes", "Sīpoli", "Olīvas"};
         while (true) {
-            int result = JOptionPane.showConfirmDialog(null, "Vai vēlaties pievienot papildus piedevas?", "Piedevas", JOptionPane.YES_NO_OPTION);
+            int result = JOptionPane.showConfirmDialog(
+                    null,
+                    "Vai vēlaties pievienot papildus piedevas?",
+                    "Piedevas",
+                    JOptionPane.YES_NO_OPTION
+            );
+
             if (result == JOptionPane.YES_OPTION) {
-                String izveletaPiedeva = (String) JOptionPane.showInputDialog(null, "Izvēlieties piedevu:", "Piedevas",
-                        JOptionPane.QUESTION_MESSAGE, null, piedevas, piedevas[0]);
+                String izveletaPiedeva = (String) JOptionPane.showInputDialog(
+                        null,
+                        "Izvēlieties piedevu:",
+                        "Piedevas",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        piedevas,
+                        piedevas[0]
+                );
+
                 if (izveletaPiedeva != null) {
                     pica.addTopping(izveletaPiedeva);
                 }
@@ -43,69 +71,110 @@ public class metodes {
                 break;
             }
         }
+
         String[] merces = {"Tomātu", "Ķiploku", "BBQ"};
-        String merce = (String) JOptionPane.showInputDialog(null, "Izvēlieties mērci:", "Mērce",
-                JOptionPane.QUESTION_MESSAGE, null, merces, merces[0]);
-             
-        int deliveryOpt = JOptionPane.showConfirmDialog(null, "Vai nepieciešama piegāde?", "Piegāde", JOptionPane.YES_NO_OPTION);
+        String merce = (String) JOptionPane.showInputDialog(
+                null,
+                "Izvēlieties mērci:",
+                "Mērce",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                merces,
+                merces[0]
+        );
+
+        int deliveryOpt = JOptionPane.showConfirmDialog(
+                null,
+                "Vai nepieciešama piegāde?",
+                "Piegāde",
+                JOptionPane.YES_NO_OPTION
+        );
+
         boolean isDelivery = (deliveryOpt == JOptionPane.YES_OPTION);
         String address = "-";
+
         if (isDelivery) {
             address = JOptionPane.showInputDialog("Ievadiet piegādes adresi:");
         }
-      
+
         Order pasutijums = new Order(name, phone, address, pica, isDelivery);
-               
+
         double galaSuma = aprekinatCenu(pica, isDelivery);
 
-        String čeks = String.format("KLIENTS: %s (%s)\nADRESE: %s\nPICA: %s [%s]\nSUMMA: %.2f EUR", 
-                                    name, phone, address, veids, izmers, galaSuma);
+        String čeks = String.format(
+                "KLIENTS: %s (%s)\nADRESE: %s\nPICA: %s [%s]\nSUMMA: %.2f EUR",
+                name,
+                phone,
+                address,
+                veids,
+                izmers,
+                galaSuma
+        );
 
-        JOptionPane.showMessageDialog(null, čeks, "Pasūtījuma kopsavilkums", JOptionPane.INFORMATION_MESSAGE);
-        
-      
+        JOptionPane.showMessageDialog(
+                null,
+                čeks,
+                "Pasūtījuma kopsavilkums",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
         saglabatFaila(čeks);
     }
-private static final String FILE_NAME = "pasutijumi.txt";
-public static void saglabatFaila(String info) {
-	try {
-		File fails = new File(FILE_NAME);
-		if (!fails.exists()) {
-			fails.createNewFile();
-			
-			JOptionPane.showMessageDialog(null,"Fails ir izveidots "+ FILE_NAME);
-		}
-		try(BufferedWriter writer = new BufferedWriter(new FileWriter(fails, true))){
-			writer.write(info);
-			writer.newLine();
-		}
-		
-	}catch(IOException e) {
-		JOptionPane.showMessageDialog(null, "Kļuda ar darbu ar Failu!"+e.getMessage(),"Kļuda",JOptionPane.ERROR_MESSAGE);
-	}
-        
-	}
-	public static double aprekinatCenu(Picca pizza, boolean isDelivery) {
-		double total = pizza.getBasePrice();
-		total +=
-				pizza.getToppings().size()*1.20;
-		if(isDelivery == true) {
-			total += 3.50;
-		}
-		return total;
-	}
 
-public static ArrayList<String>lasitNoFaila(){
-	ArrayList<String> vesture = new ArrayList<>();
-	try (BufferedReader reader = new BufferedReader(new FileReader("pasutijumi.txt"))){
-		String line;
-		while((line = reader.readLine()) !=null) {
-			vesture.add(line);
-		}
-	}catch (IOException e) {
-		JOptionPane.showMessageDialog(null,"Fails nav izveidots vai ir tukšs","Kļuda",JOptionPane.ERROR_MESSAGE);
-	}
-	return vesture;
-}
+    private static final String FILE_NAME = "pasutijumi.txt";
 
+    public static void saglabatFaila(String info) {
+        try {
+            File fails = new File(FILE_NAME);
+            if (!fails.exists()) {
+                fails.createNewFile();
+                JOptionPane.showMessageDialog(null, "Fails ir izveidots " + FILE_NAME);
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fails, true))) {
+                writer.write(info);
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Kļuda ar darbu ar Failu!" + e.getMessage(),
+                    "Kļuda",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+
+    public static double aprekinatCenu(Picca pizza, boolean isDelivery) {
+        double total = pizza.getBasePrice();
+        total += pizza.getToppings().size() * 1.20;
+
+        if (isDelivery == true) {
+            total += 3.50;
+        }
+
+        return total;
+    }
+
+    public static ArrayList<String> lasitNoFaila() {
+
+        ArrayList<String> vesture = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("pasutijumi.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                vesture.add(line);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Fails nav izveidots vai ir tukšs",
+                    "Kļuda",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+
+        return vesture;
+    }
 }
