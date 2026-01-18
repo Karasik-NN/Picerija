@@ -1,6 +1,6 @@
 # 🍕 Picu Pasaule (Pasūtījumu pārvaldības sistēma)
 
-Java (Swing) lietojumprogramma, kas paredzēta picērijas pasūtījumu automatizācijai. Programma ļauj lietotājam izvēlēties picu, pielāgot sastāvdaļas, noformēt piegādi un saglabāt pasūtījuma informāciju failā.
+Java (Swing) lietojumprogramma, kas paredzēta picērijas pasūtījumu automatizācijai. Programma ļauj lietotājam izvēlēties picu, uzkodas, dzerenus, pielāgot sastāvdaļas, noformēt piegādi un saglabāt pasūtījuma informāciju failā.
 
 ## ✨ Funkcijas
 * **Galvenā izvēlne:** Grafiska saskarne (JFrame) ar pogām un fona attēlu.
@@ -16,10 +16,10 @@ Java (Swing) lietojumprogramma, kas paredzēta picērijas pasūtījumu automatiz
 Šeit ir attēlots projekta pašreizējais statuss.
 
 - [x] Izveidot bāzes klašu struktūru (`Picca`, `Order`).
-- [x] Realizēt cenas aprēķina loģiku (izmēri + piedevas).
+- [x] Realizēt cenas aprēķina loģiku.
 - [x] Pievienot čeku saglabāšanu failā `pasutijumi.txt`.
-- [ ] Izveidot grafisko galveno izvēlni (JFrame).
-- [ ] Izveidot vizuālo picu ēdienkartes logu.
-- [ ] Pievienot datu validāciju (piemēram, telefona numura pārbaude).
-
+- [x] Izveidot grafisko galveno izvēlni (JFrame).
+- [x] Izveidot vizuālo picu ēdienkartes logu.
+- [x] Pievienot datu validāciju (piemēram, telefona numura pārbaude).
+- [x] Diagramas
 ---
