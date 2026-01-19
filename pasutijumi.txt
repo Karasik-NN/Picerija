@@ -1,0 +1,9 @@
+--- PICĒRIJAS ČEKS ---
+KLIENTS: asd (12346578)
+ADRESE: -
+PICA: Margarita [Vidēja] (Piedevas: 1)
+DZĒRIENS: Fanta (1.50€)
+UZKODA: Nav
+----------------------
+KOPĀ: 10.70 EUR
+==========================================

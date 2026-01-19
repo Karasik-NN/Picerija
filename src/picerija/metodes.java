@@ -25,7 +25,7 @@ public class metodes {
             if (phone.matches("\\d{8}")) {
                 break;
             }
-            JOptionPane.showMessageDialog(null, "Kļūda! Numuram jābūt tieši 7 cipariem.", "Kļūda", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Kļūda! Numuram jābūt tieši 8 cipariem.", "Kļūda", JOptionPane.ERROR_MESSAGE);
         }
     
         String[] picasVeidi = {"Margarita", "Kapri", "Studentu", "Havajas", "Pepperoni", "Čili", "Sicīlijas", "Kalifornijas"};
