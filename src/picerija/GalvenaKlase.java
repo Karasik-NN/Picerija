@@ -99,13 +99,13 @@ public class GalvenaKlase extends JFrame {
         menuFrame.setSize(750, 600);
         menuFrame.setLayout(new GridLayout(0, 2, 10, 10)); 
         menuFrame.add(createPizzaCard("Margarita", "5.00 - 12.00 EUR", "images/margarita.jpg"));
-        menuFrame.add(createPizzaCard("Kapri", "6.00 - 14.00 EUR", "images/kapri.jpg"));
-        menuFrame.add(createPizzaCard("Studentu", "4.50 - 10.00 EUR", "images/studentu.jpg"));
-        menuFrame.add(createPizzaCard("Havajas", "6.50 - 15.00 EUR", "images/havajas.jpg"));
-        menuFrame.add(createPizzaCard("Sicilijas", "6.00 - 13.00 EUR", "images/Sicilijas.jpg"));
-        menuFrame.add(createPizzaCard("Pepperoni", "5.50 - 14.50 EUR", "images/Pepperoni.jpg")); 
-        menuFrame.add(createPizzaCard("Čili", "5.00 - 13.00 EUR", "images/Čili.jpg"));
-        menuFrame.add(createPizzaCard("Kalifornijas", "6.50 - 13.50 EUR", "images/Kalifornijas.jpg"));
+        menuFrame.add(createPizzaCard("Kapri", "5.00 - 12.00 EUR", "images/kapri.jpg"));
+        menuFrame.add(createPizzaCard("Studentu", "5.00 - 12.00 EUR", "images/studentu.jpg"));
+        menuFrame.add(createPizzaCard("Havajas", "5.00 - 12.00 EUR", "images/havajas.jpg"));
+        menuFrame.add(createPizzaCard("Sicilijas", "5.00 - 12.00 EUR", "images/Sicilijas.jpg"));
+        menuFrame.add(createPizzaCard("Pepperoni", "5.00 - 12.00 EUR", "images/Pepperoni.jpg")); 
+        menuFrame.add(createPizzaCard("Čili", "5.00 - 12.00 EUR", "images/Čili.jpg"));
+        menuFrame.add(createPizzaCard("Kalifornijas", "5.00 - 12.00 EUR", "images/Kalifornijas.jpg"));
         menuFrame.setLocationRelativeTo(this);
         menuFrame.setVisible(true);
     }
